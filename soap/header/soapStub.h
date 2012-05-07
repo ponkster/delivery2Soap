@@ -84,10 +84,51 @@ public:
 };
 #endif
 
+#ifndef SOAP_TYPE_ns1__getDataForPengadaanResponse
+#define SOAP_TYPE_ns1__getDataForPengadaanResponse (19)
+/* ns1:getDataForPengadaanResponse */
+struct ns1__getDataForPengadaanResponse
+{
+public:
+	std::string _return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type xsd:string */
+};
+#endif
+
+#ifndef SOAP_TYPE_ns1__getDataForPengadaan
+#define SOAP_TYPE_ns1__getDataForPengadaan (22)
+/* ns1:getDataForPengadaan */
+struct ns1__getDataForPengadaan
+{
+public:
+	std::string _unit_USCOREid;	/* required element of type xsd:string */
+	time_t _timestamp;	/* required element of type xsd:dateTime */
+};
+#endif
+
+#ifndef SOAP_TYPE_ns1__getApprovedSppActionResponse
+#define SOAP_TYPE_ns1__getApprovedSppActionResponse (23)
+/* ns1:getApprovedSppActionResponse */
+struct ns1__getApprovedSppActionResponse
+{
+public:
+	std::string _return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type xsd:string */
+};
+#endif
+
+#ifndef SOAP_TYPE_ns1__getApprovedSppAction
+#define SOAP_TYPE_ns1__getApprovedSppAction (26)
+/* ns1:getApprovedSppAction */
+struct ns1__getApprovedSppAction
+{
+public:
+	std::string _no_USCOREspp;	/* required element of type xsd:string */
+};
+#endif
+
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (19)
+#define SOAP_TYPE_SOAP_ENV__Header (27)
 /* SOAP Header: */
 struct SOAP_ENV__Header
 {
@@ -103,7 +144,7 @@ private:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (20)
+#define SOAP_TYPE_SOAP_ENV__Code (28)
 /* SOAP Fault Code: */
 struct SOAP_ENV__Code
 {
@@ -118,7 +159,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (22)
+#define SOAP_TYPE_SOAP_ENV__Detail (30)
 /* SOAP-ENV:Detail */
 struct SOAP_ENV__Detail
 {
@@ -134,7 +175,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (25)
+#define SOAP_TYPE_SOAP_ENV__Reason (33)
 /* SOAP-ENV:Reason */
 struct SOAP_ENV__Reason
 {
@@ -148,7 +189,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (26)
+#define SOAP_TYPE_SOAP_ENV__Fault (34)
 /* SOAP Fault: */
 struct SOAP_ENV__Fault
 {

@@ -104,7 +104,7 @@
      </rect>
     </property>
     <property name="plainText">
-     <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;&lt;spp kode=&quot;123&quot; status=&quot;1&quot;&gt;&lt;id&gt;1&lt;/id&gt;&lt;id&gt;2&lt;/id&gt;&lt;/spp&gt;</string>
+     <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;&lt;spp kode=&quot;123/TEST/IPONK&quot; status=&quot;1&quot;&gt;&lt;id&gt;120&lt;/id&gt;&lt;id&gt;121&lt;/id&gt;&lt;id&gt;122&lt;/id&gt;&lt;id&gt;123&lt;/id&gt;&lt;id&gt;124&lt;/id&gt;&lt;/spp&gt;</string>
     </property>
    </widget>
   </widget>

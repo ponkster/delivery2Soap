@@ -21,15 +21,21 @@ void MainWindow::setSpp()
   edeliveryApiBindingProxy soap;
   ns1__setSppConfirmation spp_confirm;
   ns1__setSppConfirmationResponse spp_response;
+  const char* customEndpoint;
 
+  /**
+    assign endpoint to Endpoint line editor
+    */
+  customEndpoint = ui->lnEdEndPoint->text().trimmed().toAscii().constData();
+  //if(strlen(customEndpoint) != 0)
+  //strncpy(soap.endpoint,ui->lnEdEndPoint->text().toAscii().constData(),ui->lnEdEndPoint->text().length());
 
-
-  //spp_confirm._xml_USCOREparams = ui->txtEdXmlParam->toPlainText().toAscii().constData();
   spp_confirm._xml_USCOREparams = ui->plnTxtParam->toPlainText().toAscii().constData();
   soap.setSppConfirmation(spp_confirm._xml_USCOREparams,spp_response);
 
   QMessageBox msgBox;
-   msgBox.setText(this->boolToText(spp_response._return_));
+   msgBox.setText(soap.endpoint);
+   //msgBox.setText(this->boolToText(spp_response._return_));
    msgBox.exec();
 
 

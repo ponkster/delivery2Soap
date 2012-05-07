@@ -206,4 +206,113 @@ int edeliveryApiBindingProxy::setSppConfirmation(const char *endpoint, const cha
 		return soap_closesock(soap);
 	return soap_closesock(soap);
 }
+
+int edeliveryApiBindingProxy::getDataForPengadaan(const char *endpoint, const char *soap_action, std::string _unit_USCOREid, time_t _timestamp, struct ns1__getDataForPengadaanResponse &_param_3)
+{	struct soap *soap = this;
+	struct ns1__getDataForPengadaan soap_tmp_ns1__getDataForPengadaan;
+	if (endpoint)
+		soap_endpoint = endpoint;
+	if (!soap_endpoint)
+		soap_endpoint = "http://edelivery2.localhost/app_dev.php/ws/edeliveryApi/1.0";
+	if (!soap_action)
+		soap_action = "http://edelivery2.localhost/ws/edeliveryApi/1.0/getDataForPengadaan";
+	soap->encodingStyle = NULL;
+	soap_tmp_ns1__getDataForPengadaan._unit_USCOREid = _unit_USCOREid;
+	soap_tmp_ns1__getDataForPengadaan._timestamp = _timestamp;
+	soap_begin(soap);
+	soap_serializeheader(soap);
+	soap_serialize_ns1__getDataForPengadaan(soap, &soap_tmp_ns1__getDataForPengadaan);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_ns1__getDataForPengadaan(soap, &soap_tmp_ns1__getDataForPengadaan, "ns1:getDataForPengadaan", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_endpoint, soap_action)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_ns1__getDataForPengadaan(soap, &soap_tmp_ns1__getDataForPengadaan, "ns1:getDataForPengadaan", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap_closesock(soap);
+	if (!&_param_3)
+		return soap_closesock(soap);
+	soap_default_ns1__getDataForPengadaanResponse(soap, &_param_3);
+	if (soap_begin_recv(soap)
+	 || soap_envelope_begin_in(soap)
+	 || soap_recv_header(soap)
+	 || soap_body_begin_in(soap))
+		return soap_closesock(soap);
+	soap_get_ns1__getDataForPengadaanResponse(soap, &_param_3, "ns1:getDataForPengadaanResponse", "");
+	if (soap->error)
+		return soap_recv_fault(soap, 0);
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap_closesock(soap);
+	return soap_closesock(soap);
+}
+
+int edeliveryApiBindingProxy::getApprovedSppAction(const char *endpoint, const char *soap_action, std::string _no_USCOREspp, struct ns1__getApprovedSppActionResponse &_param_4)
+{	struct soap *soap = this;
+	struct ns1__getApprovedSppAction soap_tmp_ns1__getApprovedSppAction;
+	if (endpoint)
+		soap_endpoint = endpoint;
+	if (!soap_endpoint)
+		soap_endpoint = "http://edelivery2.localhost/app_dev.php/ws/edeliveryApi/1.0";
+	if (!soap_action)
+		soap_action = "http://edelivery2.localhost/ws/edeliveryApi/1.0/getApprovedSppAction";
+	soap->encodingStyle = NULL;
+	soap_tmp_ns1__getApprovedSppAction._no_USCOREspp = _no_USCOREspp;
+	soap_begin(soap);
+	soap_serializeheader(soap);
+	soap_serialize_ns1__getApprovedSppAction(soap, &soap_tmp_ns1__getApprovedSppAction);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_ns1__getApprovedSppAction(soap, &soap_tmp_ns1__getApprovedSppAction, "ns1:getApprovedSppAction", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_endpoint, soap_action)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_ns1__getApprovedSppAction(soap, &soap_tmp_ns1__getApprovedSppAction, "ns1:getApprovedSppAction", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap_closesock(soap);
+	if (!&_param_4)
+		return soap_closesock(soap);
+	soap_default_ns1__getApprovedSppActionResponse(soap, &_param_4);
+	if (soap_begin_recv(soap)
+	 || soap_envelope_begin_in(soap)
+	 || soap_recv_header(soap)
+	 || soap_body_begin_in(soap))
+		return soap_closesock(soap);
+	soap_get_ns1__getApprovedSppActionResponse(soap, &_param_4, "ns1:getApprovedSppActionResponse", "");
+	if (soap->error)
+		return soap_recv_fault(soap, 0);
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap_closesock(soap);
+	return soap_closesock(soap);
+}
 /* End of client proxy code */

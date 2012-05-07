@@ -62,5 +62,13 @@ class SOAP_CMAC edeliveryApiBindingProxy : public soap
 	/// Web service operation 'setSppConfirmation' (returns error code or SOAP_OK)
 	virtual	int setSppConfirmation(std::string _xml_USCOREparams, struct ns1__setSppConfirmationResponse &_param_2) { return setSppConfirmation(NULL, NULL, _xml_USCOREparams, _param_2); }
 	virtual	int setSppConfirmation(const char *endpoint, const char *soap_action, std::string _xml_USCOREparams, struct ns1__setSppConfirmationResponse &_param_2);
+
+	/// Web service operation 'getDataForPengadaan' (returns error code or SOAP_OK)
+	virtual	int getDataForPengadaan(std::string _unit_USCOREid, time_t _timestamp, struct ns1__getDataForPengadaanResponse &_param_3) { return getDataForPengadaan(NULL, NULL, _unit_USCOREid, _timestamp, _param_3); }
+	virtual	int getDataForPengadaan(const char *endpoint, const char *soap_action, std::string _unit_USCOREid, time_t _timestamp, struct ns1__getDataForPengadaanResponse &_param_3);
+
+	/// Web service operation 'getApprovedSppAction' (returns error code or SOAP_OK)
+	virtual	int getApprovedSppAction(std::string _no_USCOREspp, struct ns1__getApprovedSppActionResponse &_param_4) { return getApprovedSppAction(NULL, NULL, _no_USCOREspp, _param_4); }
+	virtual	int getApprovedSppAction(const char *endpoint, const char *soap_action, std::string _no_USCOREspp, struct ns1__getApprovedSppActionResponse &_param_4);
 };
 #endif

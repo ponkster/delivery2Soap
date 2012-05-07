@@ -159,6 +159,8 @@ int edeliveryApiBindingService::serve()
 
 static int serve_ns1__getDataForBku(edeliveryApiBindingService*);
 static int serve_ns1__setSppConfirmation(edeliveryApiBindingService*);
+static int serve_ns1__getDataForPengadaan(edeliveryApiBindingService*);
+static int serve_ns1__getApprovedSppAction(edeliveryApiBindingService*);
 
 int edeliveryApiBindingService::dispatch()
 {	soap_peek_element(this);
@@ -166,6 +168,10 @@ int edeliveryApiBindingService::dispatch()
 		return serve_ns1__getDataForBku(this);
 	if (!soap_match_tag(this, this->tag, "ns1:setSppConfirmation"))
 		return serve_ns1__setSppConfirmation(this);
+	if (!soap_match_tag(this, this->tag, "ns1:getDataForPengadaan"))
+		return serve_ns1__getDataForPengadaan(this);
+	if (!soap_match_tag(this, this->tag, "ns1:getApprovedSppAction"))
+		return serve_ns1__getApprovedSppAction(this);
 	return this->error = SOAP_NO_METHOD;
 }
 
@@ -244,6 +250,88 @@ static int serve_ns1__setSppConfirmation(edeliveryApiBindingService *soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
 	 || soap_put_ns1__setSppConfirmationResponse(soap, &_param_2, "ns1:setSppConfirmationResponse", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap->error;
+	return soap_closesock(soap);
+}
+
+static int serve_ns1__getDataForPengadaan(edeliveryApiBindingService *soap)
+{	struct ns1__getDataForPengadaan soap_tmp_ns1__getDataForPengadaan;
+	struct ns1__getDataForPengadaanResponse _param_3;
+	soap_default_ns1__getDataForPengadaanResponse(soap, &_param_3);
+	soap_default_ns1__getDataForPengadaan(soap, &soap_tmp_ns1__getDataForPengadaan);
+	soap->encodingStyle = NULL;
+	if (!soap_get_ns1__getDataForPengadaan(soap, &soap_tmp_ns1__getDataForPengadaan, "ns1:getDataForPengadaan", NULL))
+		return soap->error;
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap->error;
+	soap->error = soap->getDataForPengadaan(soap_tmp_ns1__getDataForPengadaan._unit_USCOREid, soap_tmp_ns1__getDataForPengadaan._timestamp, _param_3);
+	if (soap->error)
+		return soap->error;
+	soap_serializeheader(soap);
+	soap_serialize_ns1__getDataForPengadaanResponse(soap, &_param_3);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_ns1__getDataForPengadaanResponse(soap, &_param_3, "ns1:getDataForPengadaanResponse", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	};
+	if (soap_end_count(soap)
+	 || soap_response(soap, SOAP_OK)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_ns1__getDataForPengadaanResponse(soap, &_param_3, "ns1:getDataForPengadaanResponse", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap->error;
+	return soap_closesock(soap);
+}
+
+static int serve_ns1__getApprovedSppAction(edeliveryApiBindingService *soap)
+{	struct ns1__getApprovedSppAction soap_tmp_ns1__getApprovedSppAction;
+	struct ns1__getApprovedSppActionResponse _param_4;
+	soap_default_ns1__getApprovedSppActionResponse(soap, &_param_4);
+	soap_default_ns1__getApprovedSppAction(soap, &soap_tmp_ns1__getApprovedSppAction);
+	soap->encodingStyle = NULL;
+	if (!soap_get_ns1__getApprovedSppAction(soap, &soap_tmp_ns1__getApprovedSppAction, "ns1:getApprovedSppAction", NULL))
+		return soap->error;
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap->error;
+	soap->error = soap->getApprovedSppAction(soap_tmp_ns1__getApprovedSppAction._no_USCOREspp, _param_4);
+	if (soap->error)
+		return soap->error;
+	soap_serializeheader(soap);
+	soap_serialize_ns1__getApprovedSppActionResponse(soap, &_param_4);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_ns1__getApprovedSppActionResponse(soap, &_param_4, "ns1:getApprovedSppActionResponse", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	};
+	if (soap_end_count(soap)
+	 || soap_response(soap, SOAP_OK)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_ns1__getApprovedSppActionResponse(soap, &_param_4, "ns1:getApprovedSppActionResponse", NULL)
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))

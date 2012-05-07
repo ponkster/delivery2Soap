@@ -72,5 +72,11 @@ class SOAP_CMAC edeliveryApiBindingService : public soap
 
 	/// Web service operation 'setSppConfirmation' (returns error code or SOAP_OK)
 	virtual	int setSppConfirmation(std::string _xml_USCOREparams, struct ns1__setSppConfirmationResponse &_param_2) SOAP_PURE_VIRTUAL;
+
+	/// Web service operation 'getDataForPengadaan' (returns error code or SOAP_OK)
+	virtual	int getDataForPengadaan(std::string _unit_USCOREid, time_t _timestamp, struct ns1__getDataForPengadaanResponse &_param_3) SOAP_PURE_VIRTUAL;
+
+	/// Web service operation 'getApprovedSppAction' (returns error code or SOAP_OK)
+	virtual	int getApprovedSppAction(std::string _no_USCOREspp, struct ns1__getApprovedSppActionResponse &_param_4) SOAP_PURE_VIRTUAL;
 };
 #endif
